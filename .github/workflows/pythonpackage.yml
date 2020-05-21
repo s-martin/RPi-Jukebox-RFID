@@ -38,5 +38,5 @@ jobs:
     - name: pytest scripts
       working-directory: ./scripts
       run: |
-        pip install -r -/test/requirements.txt
+        pip install -r ./test/requirements.txt
         pytest
