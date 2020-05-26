@@ -1,5 +1,5 @@
 {
-    "name": "RPi-Jukebox-RFID",
+    "name": "micz-flor/rpi-jukebox-rfid",
     "description": "composer file",
     "require-dev": {
         "phpunit/phpunit": "^8",
