@@ -122,6 +122,7 @@ class TrackEditTest extends TestCase {
                     . "--album='amet consectetur' "
                     . "--song='dolor sit' "
                     . "--TCOM='adipisici elit aeueoe' '/tmp/source_folder/file to move üöä.mp3'";
+                //TODO test fails here and causes Serialization of Closure exception
                 $this->assertEquals(addslashes($mid3v2), addslashes($command));
 
             }
