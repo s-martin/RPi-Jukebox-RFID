@@ -23,7 +23,6 @@ printf "Activating SPI...\n"
 sudo raspi-config nonint do_spi 0
 
 printf "Configure RFID reader in Phoniebox...\n"
-cp "${JUKEBOX_HOME_DIR}"/scripts/Reader.py.experimental "${JUKEBOX_HOME_DIR}"/scripts/Reader.py
 printf "MFRC522" > "${JUKEBOX_HOME_DIR}"/scripts/deviceName.txt
 sudo chown pi:www-data "${JUKEBOX_HOME_DIR}"/scripts/deviceName.txt
 sudo chmod 644 "${JUKEBOX_HOME_DIR}"/scripts/deviceName.txt

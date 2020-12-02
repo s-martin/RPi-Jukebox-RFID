@@ -36,7 +36,6 @@ printf "Installing Python requirements for PN532...\n"
 sudo python3 -m pip install --upgrade --force-reinstall -q -r "${JUKEBOX_HOME_DIR}"/components/rfid-reader/PN532/requirements.txt
 
 printf "Configure RFID reader in Phoniebox...\n"
-cp "${JUKEBOX_HOME_DIR}"/scripts/Reader.py.experimental "${JUKEBOX_HOME_DIR}"/scripts/Reader.py
 printf "PN532" > "${JUKEBOX_HOME_DIR}"/scripts/deviceName.txt
 sudo chown pi:www-data "${JUKEBOX_HOME_DIR}"/scripts/deviceName.txt
 sudo chmod 644 "${JUKEBOX_HOME_DIR}"/scripts/deviceName.txt
