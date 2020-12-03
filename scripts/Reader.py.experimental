@@ -7,7 +7,6 @@
 
 import os.path
 import sys
-import RPi.GPIO as GPIO
 import logging
 
 from evdev import InputDevice, categorize, ecodes, list_devices

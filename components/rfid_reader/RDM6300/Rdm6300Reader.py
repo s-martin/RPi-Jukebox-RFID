@@ -3,7 +3,6 @@
 
 import serial
 import string
-import RPi.GPIO as GPIO
 import logging
 
 
