@@ -8,7 +8,12 @@
 import os.path
 import sys
 
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except (RuntimeError, ModuleNotFoundError):
+    import fake_rpigpio.utils
+    fake_rpigpio.utils.install()
+
 import logging
 
 from evdev import InputDevice, categorize, ecodes, list_devices
@@ -29,6 +34,9 @@ class NonUsbDevice(object):
     def __init__(self, name):
         self.name = name
 
+class DummyReader(object):
+    def readCard(self):
+        return input('Manually enter RFID card number: ')
 
 class UsbReader(object):
     def __init__(self, device):
@@ -86,17 +94,17 @@ class Rdm6300Reader:
         except serial.SerialException as e:
             logger.error(e)
             exit(1)
-        
+
         self.number_format = ''
         if param is not None:
             nf = param.get("numberformat")
             if nf is not None:
                 self.number_format = nf
-        
+
     def convert_to_weigand26_when_checksum_ok(self,raw_card_id):
         weigand26 = []
         xor = 0
-        for i in range(0, len(raw_card_id)>>1): 
+        for i in range(0, len(raw_card_id)>>1):
             val = int(raw_card_id[i*2:i*2+2],16)
             if (i < 5):
                 xor = xor ^ val
@@ -135,18 +143,18 @@ class Rdm6300Reader:
                         w26 = self.convert_to_weigand26_when_checksum_ok(raw_card_id)
                         if (w26 is not None):
                             #print ("factory code is ignored" ,w26[0])
-                            
-                            if self.number_format == 'card_id_dec': 
+
+                            if self.number_format == 'card_id_dec':
                                 #this will return a 10 Digit card ID e.g. 0006762840
                                 card_id = '{0:010d}'.format( (w26[1] << 24) + (w26[2] << 16) + (w26[3] << 8) + w26[4])
-                            elif self.number_format == 'card_id_float': 
+                            elif self.number_format == 'card_id_float':
                                 #this will return card ID as fraction e.g. 103,12632
                                 card_id='{0:d},{1:05d}'.format( ((w26[1] << 8) + w26[2]) , ((w26[3] << 8) + w26[4]))
                             else:
                                 #this will return the raw (original) card ID e.g. 070067315809
                                 card_id = raw_card_id
-                        
-                            if card_id != self.last_card_id: #does this still makes sense here? 
+
+                            if card_id != self.last_card_id: #does this still makes sense here?
                                 self.last_card_id = card_id  #Means 2nd swipe will not be possible with RDM6300
                                 return self.last_card_id     #intentionaly? Good reason for this?
 
@@ -189,10 +197,12 @@ class Reader(object):
                 self.reader = Mfrc522Reader()
             elif device_name == 'RDM6300':
                 # The Rdm6300Reader supports 2 Additional Number Formats which can bee choosen by an optional parameter dictionary:
-                # {'numberformat':'card_id_float'} or {'numberformat':'card_id_dec'} 
+                # {'numberformat':'card_id_float'} or {'numberformat':'card_id_dec'}
                 self.reader = Rdm6300Reader()
             elif device_name == 'PN532':
                 self.reader = Pn532Reader()
+            elif device_name == 'Dummy':
+                self.reader = DummyReader()
             else:
                 try:
                     device = [device for device in get_devices() if device.name == device_name][0]
