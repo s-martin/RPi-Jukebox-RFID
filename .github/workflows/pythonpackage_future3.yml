@@ -43,6 +43,5 @@ jobs:
         pip3 install -r src/jukebox/components/rfid/hardware/rc522_spi/requirements.txt
     - name: Lint with flake8
       run: |
-        pip3 install flake8
         # Stop the build if linting fails
         ./run_flake8.sh
