@@ -1,0 +1,7 @@
+# RfidCardDetectState
+
+
+
+
+## Methods
+
