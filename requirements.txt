@@ -32,4 +32,5 @@ gpiozero
 flake8>=4.0.0
 flake8-docstrings
 pytest
+pytest-cov
 mock
