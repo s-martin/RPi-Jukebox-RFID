@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Command Line Interface to the Jukebox RPC Server
+Command Line Interface to the Jukebox RPC Server.
 
 A command line tool for sending RPC commands to the running jukebox app.
 This uses the same interface as the WebUI. Can be used for additional control
