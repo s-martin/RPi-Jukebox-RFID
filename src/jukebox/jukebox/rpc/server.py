@@ -57,9 +57,10 @@ cfg = jukebox.cfghandler.get_handler('jukebox')
 
 
 class RpcServer:
-    """The RPC Server Class"""
+    """The RPC Server Class."""
+
     def __init__(self, context=None):
-        """Initialize the connections and bind to the ports"""
+        """Initialize the connections and bind to the ports."""
         # Get the global context (will be created if non-existing)
         logger.info(f"Init RPC Server (Pyzmq version: {zmq.pyzmq_version()}; "
                     f"ZMQ version: {zmq.zmq_version()}; has draft API: {zmq.DRAFT_API})")
@@ -89,14 +90,12 @@ class RpcServer:
         logger.info('All socket connections initialized')
 
     def terminate(self):
-        # This does not really exit the server
-        # as the run has a blocking call to socket.recv()
+        """This does not really exit the server as the run has a blocking call to socket.recv()."""
         logger.info("Closing RPC Server")
         self._keep_running = False
 
     def run(self):
-        """The main endless loop waiting for requests and forwarding the
-        call request to the plugin module"""
+        """The main endless loop waiting for requests and forwarding the call request to the plugin module."""
         self._keep_running = True
         logger.info("RPC Servers started")
         # TODO: check if connected, otherwise connect or exit?

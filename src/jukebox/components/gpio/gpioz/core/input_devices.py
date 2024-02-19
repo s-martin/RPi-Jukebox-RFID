@@ -87,6 +87,7 @@ class EventProperty:
 
     :meta private:
     """
+
     def __init__(self, doc=''):
         self.__doc__ = doc
 
@@ -191,6 +192,7 @@ class Button(NameMixin, ButtonBase):
     .. copied from GPIOZero's documentation: active_state, bounce_time
     .. Copyright Ben Nuttall / SPDX-License-Identifier: BSD-3-Clause
     """
+
     def __init__(
             self, pin=None, *, pull_up=True, active_state=None,
             bounce_time=None,
@@ -245,8 +247,8 @@ class LongPressButton(NameMixin, ButtonBase):
 
     :param hold_time: The minimum time, the button must be pressed be running :attr:`on_press` for the first time.
         Also the time in seconds to wait between invocations of :attr:`on_press`.
-
     """
+
     def __init__(
             self, pin=None, *, pull_up=True, active_state=None,
             bounce_time=None,
@@ -309,6 +311,7 @@ class ShortLongPressButton(NameMixin, ButtonBase):
 
     :param name: See #Button
     """
+
     def __init__(
             self, pin=None, *, pull_up=True, active_state=None, bounce_time=None,
             hold_time=1, hold_repeat=False, pin_factory=None, name=None):
