@@ -48,9 +48,7 @@ def _acquire_lock() -> None:
 
 
 def _release_lock() -> None:
-    """
-    Release the module-level lock acquired by calling _acquireLock().
-    """
+    """Release the module-level lock acquired by calling _acquireLock()."""
     if _lock_module:
         _lock_module.release()
 
@@ -131,16 +129,12 @@ class ConfigHandler:
         self._data.__delitem__(*args, **kwargs)
 
     def get(self, key, *, default=None):
-        """
-        Enforce keyword on default to avoid accidental misuse when actually getn is wanted
-        """
+        """Enforce keyword on default to avoid accidental misuse when actually getn is wanted"""
         with self._lock:
             return self._data.get(key, default)
 
     def setdefault(self, key, *, value):
-        """
-        Enforce keyword on default to avoid accidental misuse when actually setndefault is wanted
-        """
+        """Enforce keyword on default to avoid accidental misuse when actually setndefault is wanted"""
         with self._lock:
             return self._data.setdefault(key, value)
 
@@ -245,9 +239,7 @@ class ConfigHandler:
         return is_modified_value
 
     def clear_modified(self) -> None:
-        """
-        Sets the current state as new baseline, clearing the is_modified state
-        """
+        """Sets the current state as new baseline, clearing the is_modified state"""
         with self._lock:
             self._hash = hashlib.md5(self._data.__str__().encode('utf8')).digest()
 

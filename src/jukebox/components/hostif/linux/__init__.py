@@ -156,7 +156,8 @@ timer_temperature: GenericEndlessTimerClass
 def get_cpu_temperature():
     """Get the CPU temperature with single decimal point
 
-    No error handling: this is expected to take place up-level!"""
+    No error handling: this is expected to take place up-level!
+    """
     with open('/sys/class/thermal/thermal_zone0/temp') as f:
         temperature = float(f.readline()) / 1000.0
         temperature = round(temperature, 1)
@@ -186,9 +187,7 @@ def publish_cpu_temperature():
 
 @plugin.register
 def get_ip_address():
-    """
-    Get the IP address
-    """
+    """Get the IP address"""
     p = subprocess.run(['hostname', '-I'], capture_output=True)
     if p.returncode == 0:
         ip_address = p.stdout.strip().decode()
@@ -220,7 +219,8 @@ def wlan_disable_power_down(card=None):
     """Turn off power management of wlan. Keep RPi reachable via WLAN
 
     This must be done after every reboot
-    card=None takes card from configuration file"""
+    card=None takes card from configuration file
+    """
     if card is None:
         card = cfg.setndefault('host', 'wlan_power', 'card', value='wlan0')
     logger.info(f'Disable power down management of {card}')
@@ -352,7 +352,8 @@ if IS_RPI:  # noqa: C901
     def hdmi_power_down():
         """Power down HDMI circuits to save power if no display is connected
 
-        This must be done after every reboot"""
+        This must be done after every reboot
+        """
         logger.info('Power down HDMI circuits')
         ret = subprocess.run(['sudo', '/usr/bin/tvservice', '-o'],
                              stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)

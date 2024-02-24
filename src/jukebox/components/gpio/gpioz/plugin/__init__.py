@@ -156,7 +156,8 @@ def build_output_device(name: str, config: Dict):
     """Construct and register a new output device
 
     In principal all supported GPIOZero output devices can be used.
-    For all devices a custom functions need to be written to control the state of the outputs"""
+    For all devices a custom functions need to be written to control the state of the outputs
+    """
     global factory
     device_type = config.get('type', None)
     kwargs = config.get('kwargs', {})
@@ -195,7 +196,8 @@ def _build_all_output_devices():
 def build_input_device(name: str, config):
     """Construct and connect a new input device
 
-    Supported input devices are those from gpio.gpioz.core.input_devices"""
+    Supported input devices are those from gpio.gpioz.core.input_devices
+    """
     global factory
     device_type = config.get('type')
     kwargs = config.get('kwargs', {})

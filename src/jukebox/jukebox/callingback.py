@@ -1,8 +1,7 @@
 # RPi-Jukebox-RFID Version 3
 # Copyright (c) See file LICENSE in project root folder
-"""
-Provides a generic callback handler
-"""
+"""Provides a generic callback handler"""
+
 import logging
 import threading
 import traceback
@@ -11,8 +10,7 @@ from typing import Callable, Optional, List
 
 class CallbackHandler:
     """
-    Generic Callback Handler to collect callbacks functions through :func:`register` and execute them
-    with :func:`run_callbacks`
+    Generic Callback Handler to collect callback functions through :func:`register` and execute them with :func:`run_callbacks`
 
     A lock is used to sequence registering of new functions and running callbacks.
 

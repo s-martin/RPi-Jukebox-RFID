@@ -1,6 +1,5 @@
-"""
-Generalized listener for ``dev/input`` devices
-"""
+"""Generalized listener for ``dev/input`` devices"""
+
 import logging
 import threading
 import time
@@ -22,7 +21,8 @@ def _filter_by_mandatory_keys(all_devices: List[evdev.InputDevice], mandatory_ke
     """Generator filtering all_devices based on mandatory keys
 
     :param all_devices: List of input device candidates
-    :param mandatory_keys: Set of integer key codes that included devices must have"""
+    :param mandatory_keys: Set of integer key codes that included devices must have
+    """
     for dev in all_devices:
         try:
             device_key_list = dev.capabilities()[ev.ecodes.EV_KEY]

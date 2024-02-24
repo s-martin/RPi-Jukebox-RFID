@@ -47,6 +47,7 @@ class LED(NameMixin, gpiozero.LED):
     :param name: The name of the button for use in error messages. This parameter cannot be set explicitly
         through the configuration file
     """
+
     def __init__(self, pin=None, active_high=True, initial_value=False,
                  pin_factory=None, name=None):
         super().__init__(pin=pin, active_high=active_high, initial_value=initial_value, pin_factory=pin_factory, name=name)

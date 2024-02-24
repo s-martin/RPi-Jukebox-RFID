@@ -123,9 +123,7 @@ def _acquire_lock():
 
 
 def _release_lock():
-    """
-    Release the module-level lock acquired by calling _acquireLock().
-    """
+    """Release the module-level lock acquired by calling _acquireLock()."""
     if _lock_module:
         _lock_module.release()
 
@@ -134,9 +132,8 @@ def _release_lock():
 # Internals
 # ---------------------------------------------------------------------------
 class PluginPackageClass:
-    """
-    A local data class for holding all information about a loaded plugin package
-    """
+    """A local data class for holding all information about a loaded plugin package"""
+
     def __init__(self, loaded_from: str):
         # The package reference is dynamically typed as we do not know what it contains
         # https://docs.python.org/3/library/typing.html#the-any-type
@@ -419,7 +416,6 @@ def register(plugin: Optional[Callable] = None, *,
     :param auto_tag:
     :return:
     """
-
     # print(f"{plugin}")
     with _lock_module:
         if plugin is None:
@@ -609,7 +605,8 @@ def load_all_unnamed(packages_unnamed: Iterable[str], prefix: Optional[str] = No
 def load_all_finalize(ignore_errors=False):
     """Calls all functions registered with @finalize from all loaded modules in the order they were loaded
 
-    This must be executed after the last plugin package is loaded"""
+    This must be executed after the last plugin package is loaded
+    """
     # Preserve loading-order for finalize order:
     # Order of modules in dictionary is preserved in Python >= 3.7.
     #  ... Else use OrdredDict for _PACKAGES??
@@ -961,7 +958,8 @@ def generate_help_rst(stream):
 def get_all_loaded_packages() -> Dict[str, str]:
     """Report a short summary of all loaded packages
 
-    :return: Dictionary of the form `{loaded_as: loaded_from, ...}`"""
+    :return: Dictionary of the form `{loaded_as: loaded_from, ...}`
+    """
     with _lock_module:
         return {k: _PLUGINS[k].loaded_from for k in _PLUGINS.keys()}
 

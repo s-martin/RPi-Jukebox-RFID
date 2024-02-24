@@ -1,6 +1,5 @@
-"""
-Common utility functions
-"""
+"""Common utility functions"""
+
 import functools
 import logging
 import copy
@@ -120,7 +119,8 @@ def bind_rpc_command(cfg_rpc_cmd: Dict, dereference=False, logger: logging.Logge
             is circumvented. Use with care!
 
     :return: Callable function w/o parameters which directly runs the RPC command
-        using plugs.call_ignore_errors"""
+        using plugs.call_ignore_errors
+    """
     action = decode_rpc_command(cfg_rpc_cmd, logger)
     if action is None:
         raise KeyError(f"RPC command config is empty: '{cfg_rpc_cmd}'")
@@ -267,7 +267,6 @@ def generate_cmd_alias_reference(stream):
 
 def get_git_state():
     """Return git state information for the current branch"""
-
     gitlog = "No git log info"
     try:
         sub = subprocess.run("git log --pretty='%h [%cs] %s %d' -n 1 --no-color",

@@ -37,7 +37,8 @@ def list_cards():
 
     This is intended as basis for a formatter function
 
-    Format: 'id': {decoded_function_call, ignore_same_id_delay, ignore_card_removal_action, description, from_alias}"""
+    Format: 'id': {decoded_function_call, ignore_same_id_delay, ignore_card_removal_action, description, from_alias}
+    """
     card_list = {}
     with cfg_cards:
         for card_id, card_action in cfg_cards.items():

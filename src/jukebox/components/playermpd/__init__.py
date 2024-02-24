@@ -249,7 +249,7 @@ class PlayerMPD:
 
     def _mpd_status_poll(self):
         """
-        this method polls the status from mpd and stores the important inforamtion in the music_player_status,
+        This method polls the status from mpd and stores the important inforamtion in the music_player_status,
         it will repeat itself in the intervall specified by self.mpd_status_poll_interval
         """
         self.mpd_status.update(self.mpd_retry_with_mutex(self.mpd_client.status))

@@ -118,29 +118,21 @@ class ButtonBase(ABC):
 
     @property
     def value(self):
-        """
-        Returns 1 if the button is currently pressed, and 0 if it is not.
-        """
+        """Returns 1 if the button is currently pressed, and 0 if it is not."""
         return self._button.value
 
     @property
     def pin(self):
-        """
-        Returns the underlying pin class from GPIOZero.
-        """
+        """Returns the underlying pin class from GPIOZero."""
         return self._button.pin
 
     @property
     def pull_up(self):
-        """
-        If :data:`True`, the device uses an internal pull-up resistor to set the GPIO pin “high” by default.
-        """
+        """If :data:`True`, the device uses an internal pull-up resistor to set the GPIO pin “high” by default."""
         return self._button.pull_up
 
     def close(self):
-        """
-        Close the device and release the pin
-        """
+        """Close the device and release the pin"""
         self._button.close()
 
     def __enter__(self):
@@ -207,9 +199,7 @@ class Button(NameMixin, ButtonBase):
 
     @property
     def on_press(self):
-        """
-        The function to run when the device has been pressed
-        """
+        """The function to run when the device has been pressed"""
         return self._button.when_pressed
 
     @on_press.setter
@@ -267,9 +257,7 @@ class LongPressButton(NameMixin, ButtonBase):
 
     @on_press.setter
     def on_press(self, func):
-        """
-        The function to run when the device has been pressed for longer than :attr:`hold_time`
-        """
+        """The function to run when the device has been pressed for longer than :attr:`hold_time`"""
         self._button.when_held = func
 
     @property
@@ -387,23 +375,17 @@ class RotaryEncoder(NameMixin):
 
     @property
     def pin_a(self):
-        """
-        Returns the underlying pin A
-        """
+        """Returns the underlying pin A"""
         return self._rotary.a.pin
 
     @property
     def pin_b(self):
-        """
-        Returns the underlying pin B
-        """
+        """Returns the underlying pin B"""
         return self._rotary.b.pin
 
     @property
     def on_rotate_clockwise(self):
-        """
-        The function to run when the encoder is rotated clockwise
-        """
+        """The function to run when the encoder is rotated clockwise"""
         return self._rotary.when_rotated_clockwise
 
     @on_rotate_clockwise.setter
@@ -412,9 +394,7 @@ class RotaryEncoder(NameMixin):
 
     @property
     def on_rotate_counter_clockwise(self):
-        """
-        The function to run when the encoder is rotated counter clockwise
-        """
+        """The function to run when the encoder is rotated counter clockwise"""
         return self._rotary.when_rotated_clockwise
 
     @on_rotate_counter_clockwise.setter
@@ -426,9 +406,7 @@ class RotaryEncoder(NameMixin):
         self.on_rotate_counter_clockwise = self._decode_rpc_action('on_rotate_counter_clockwise', action_config)
 
     def close(self):
-        """
-        Close the device and release the pin
-        """
+        """Close the device and release the pin"""
         self._rotary.close()
 
 
@@ -470,6 +448,7 @@ class TwinButton(NameMixin):
 
         :meta private:
         """
+
         IDLE = 0
         HOLD_A = 1
         CONT_A = 2
@@ -513,9 +492,7 @@ class TwinButton(NameMixin):
         self.close()
 
     def close(self):
-        """
-        Close the device and release the pins
-        """
+        """Close the device and release the pins"""
         self._pin_a.close()
         self._pin_b.close()
 
