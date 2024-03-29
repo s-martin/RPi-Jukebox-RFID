@@ -188,6 +188,7 @@ class PublishServer(threading.Thread):
 
     The code is structures using a [Reactor Pattern](https://zguide.zeromq.org/docs/chapter5/#Using-a-Reactor)
     """
+
     def __init__(self, tcp_port, websocket_port):
         super().__init__(name='PubServer')
         self.daemon = True

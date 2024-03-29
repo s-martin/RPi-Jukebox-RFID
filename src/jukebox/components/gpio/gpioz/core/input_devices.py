@@ -32,6 +32,7 @@ class NameMixin(ABC):
 
     :meta private:
     """
+
     def __init__(self, *args, name, **kwargs):
         super().__init__(*args, **kwargs)
         self._name = 'Unnamed' if name is None else name
@@ -107,6 +108,7 @@ class ButtonBase(ABC):
 
     :meta private:
     """
+
     def __init__(
             self, pin=None, pull_up=True, active_state=None,
             bounce_time=None,
@@ -368,6 +370,7 @@ class RotaryEncoder(NameMixin):
 
     :param name: See #Button
     """
+
     def __init__(self, a, b, *, bounce_time=None, pin_factory=None, name=None):
         super().__init__(name=name)
         self._rotary = gpiozero.RotaryEncoder(a, b, bounce_time=bounce_time, pin_factory=pin_factory,

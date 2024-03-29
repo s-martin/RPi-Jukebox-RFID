@@ -212,7 +212,6 @@ def register_volume_rgbled_callback(device):
 
     * :class:`components.gpio.gpioz.core.output_devices.RGBLED`
     """
-
     volume_to_rgb = VolumeToRGB(100, 120, 180)
 
     def audio_volume_change_callback(volume, is_min, is_max):

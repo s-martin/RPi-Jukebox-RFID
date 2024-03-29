@@ -207,17 +207,17 @@ class PlaylistCollector:
 
     @classmethod
     def _is_valid(cls, direntry: os.DirEntry) -> bool:
-        """
-        Check if filename is valid
-        """
+        """Check if filename is valid"""
         return direntry.is_file() and not direntry.name.startswith('.') \
                and PlaylistCollector._exclude_re.match(direntry.name) is None and direntry.name.find('.') >= 0
 
     @classmethod
     def set_exclusion_endings(cls, endings: List[str]):
-        """Set the class-wide file ending exclusion list
+        """
+        Set the class-wide file ending exclusion list
 
-        See :attr:`PlaylistCollector._exclude_endings`"""
+        See :attr:`PlaylistCollector._exclude_endings`
+        """
         cls._exclude_endings = copy.deepcopy(endings)
         # Will generate a regex pattern string like this: r'.*\.((txt)|(zip))$
         cls._exclude_str = '.*\\.((' + ')|('.join(cls._exclude_endings) + '))$'

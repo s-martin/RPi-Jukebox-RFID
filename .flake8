@@ -7,6 +7,8 @@ ignore =
     E128,
     # line break before binary operator
     W503,
+    # we dont have always a summary in the first line
+    D205,
     # We don't always want periods at the end of the first docstring line
     D400,
     # We dont rephrase to imperative mood
@@ -16,6 +18,8 @@ per-file-ignores =
     # Not necessary, if __all__ is declared in __init__ file
     # https://www.python.org/dev/peps/pep-0008/#id48
     __init__.py:F401
+    # Ignore docstring warnings in descriptions
+    **/description.py:D100
     # Ignore docstring warnings in test files
     **/test_*.py:D100,D101,D102,D103,D107
     # Ignore docstring warnings in test config file

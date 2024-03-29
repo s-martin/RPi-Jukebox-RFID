@@ -132,7 +132,6 @@ class RGBLED(NameMixin, gpiozero.RGBLED):
             self, on_time=1, off_time=1, *, fade_in_time=0, fade_out_time=0,
             on_color=(1, 1, 1), off_color=(0, 0, 0), n=None, background=True, **igorned_kwargs):
         """Flash the LED with :attr:`on_color` and restore the previous value afterwards"""
-
         if isinstance(self._leds[0], LED):
             if fade_in_time:
                 raise ValueError('fade_in_time must be 0 with non-PWM RGBLEDs')

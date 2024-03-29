@@ -28,9 +28,7 @@ class RfidCardDetectState(Enum):
 
 
 class RfidCardDetectCallbacks(CallbackHandler):
-    """
-    Callbacks are executed if rfid card is detected
-    """
+    """Callbacks are executed if rfid card is detected"""
 
     def register(self, func: Callable[[str, RfidCardDetectState], None]):
         """
@@ -57,10 +55,8 @@ rfid_card_detect_callbacks: RfidCardDetectCallbacks = RfidCardDetectCallbacks('r
 
 
 class CardRemovalTimerClass(threading.Thread):
-    """
-    A timer watchdog thread that calls timeout_action on time-out
+    """A timer watchdog thread that calls timeout_action on time-out"""
 
-    """
     def __init__(self, on_timeout_callback, logger: logging.Logger = None):
         """
         :param on_timeout_callback: The function to execute on time-out

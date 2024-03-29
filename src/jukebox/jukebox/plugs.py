@@ -965,7 +965,8 @@ def get_all_loaded_packages() -> Dict[str, str]:
 
 
 def get_all_failed_packages() -> Dict[str, str]:
-    """Report those packages that did not load error free
+    """
+    Report those packages that did not load error free
 
     > [!NOTE]
     > Package could fail to load
@@ -975,6 +976,7 @@ def get_all_failed_packages() -> Dict[str, str]:
     >
     > Partially loaded packages are listed in both _PLUGINS and _PLUGINS_FAILED
 
-    :return: Dictionary of the form `{loaded_as: loaded_from, ...}`"""
+    :return: Dictionary of the form `{loaded_as: loaded_from, ...}`
+    """
     with _lock_module:
         return {k: _PLUGINS_FAILED[k].loaded_from for k in _PLUGINS_FAILED.keys()}

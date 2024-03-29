@@ -155,7 +155,6 @@ class EvDevKeyListener(threading.Thread):
                 pass
 
     def run(self):
-        """"""
         time.sleep(self.open_initial_delay)
         for idx in range(self.open_retry_cnt):
             try:
