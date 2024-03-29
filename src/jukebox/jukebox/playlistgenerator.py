@@ -166,6 +166,7 @@ class PlaylistCollector:
     If changed it will affect all instances. For modifications always call :func:`set_exclusion_endings`.
 
     """
+
     # There are two paths variables:
     # - (a) the full directory path
     # - (b) the relative directory path from the music_library_base_path

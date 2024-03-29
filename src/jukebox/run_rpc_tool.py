@@ -126,9 +126,7 @@ def format_usage(scr):
 
 
 def get_common_beginning(strings):
-    """
-    Return the strings that are common to the beginning of each string in the strings list.
-    """
+    """Return the strings that are common to the beginning of each string in the strings list."""
     result = []
     limit = min([len(s) for s in strings])
     for i in range(limit):
@@ -312,10 +310,10 @@ def main(scr):
 def runcmd(cmd):
     """
     Just run a command.
+
     Right now duplicates more or less main()
     :todo remove duplication of code
     """
-
     # Split on whitespaces to separate cmd and arg list
     dec = [v for v in cmd.strip().split(' ') if len(v) > 0]
     if len(dec) == 0:

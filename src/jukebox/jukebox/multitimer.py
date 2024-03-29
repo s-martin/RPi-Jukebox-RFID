@@ -89,9 +89,7 @@ class MultiTimer(threading.Thread):
 
 
 class GenericTimerClass:
-    """
-    Interface for plugin / RPC accessibility for a single event timer
-    """
+    """Interface for plugin / RPC accessibility for a single event timer"""
 
     def __init__(self, name, wait_seconds: float, function, args=None, kwargs=None):
         """
@@ -210,9 +208,8 @@ class GenericTimerClass:
 
 
 class GenericEndlessTimerClass(GenericTimerClass):
-    """
-    Interface for plugin / RPC accessibility for an event timer call function endlessly every m seconds
-    """
+    """Interface for plugin / RPC accessibility for an event timer call function endlessly every m seconds"""
+
     def __init__(self, name, wait_seconds_per_iteration: float, function, args=None, kwargs=None):
         # Remove the necessity for the 'iterations' keyword that is added by GenericTimerClass
         super().__init__(name, wait_seconds_per_iteration, function, args, kwargs)

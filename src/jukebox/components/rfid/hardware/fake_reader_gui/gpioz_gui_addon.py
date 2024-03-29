@@ -1,8 +1,6 @@
 # RPi-Jukebox-RFID Version 3
 # Copyright (c) See file LICENSE in project root folder
-"""
-Add GPIO input devices and output devices to the RFID Mock Reader GUI
-"""
+"""Add GPIO input devices and output devices to the RFID Mock Reader GUI"""
 import gpiozero
 import logging
 import functools
@@ -17,9 +15,7 @@ logger = logging.getLogger('jb.rfid.tk')
 
 
 def _gpioz_press_short(device):
-    """
-    Simulate a short press on an input device
-    """
+    """Simulate a short press on an input device"""
     logger.debug(f"Press button short {device.pin.number}")
     # Drive low is low level function --> need to adjust level according to _active_state
     delay = 0.01 if device.pin.bounce is None else 0.01 + device.pin.bounce
@@ -35,9 +31,7 @@ def _gpioz_press_short(device):
 
 
 def _gpioz_press_long(device):
-    """
-    Simulate a long press on an input device. Long means longer than the configured hold_time
-    """
+    """Simulate a long press on an input device. Long means longer than the configured hold_time"""
     logger.debug(f"Press button long {device.pin.number}")
     delay = device.hold_time + 0.05
     if device.pin.bounce is not None:
@@ -79,7 +73,6 @@ def create_inputs(frame, default_btn_width, default_padx, default_pady):
     :param frame: The TK frame (e.g. LabelFrame) in the main GUI to add the buttons to
     :return: List of all added GUI buttons
     """
-
     _gpoioz_input_devices = []
     idx = 0
     for name, device in gpioz.plugin.input_devices.items():

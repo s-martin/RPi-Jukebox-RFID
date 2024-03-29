@@ -1,7 +1,4 @@
-"""
-Miscellaneous function package
-
-"""
+"""Miscellaneous function package"""
 import os
 import time
 import logging.handlers

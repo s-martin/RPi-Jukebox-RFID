@@ -10,6 +10,7 @@ class ReaderBaseClass(ABC):
 
     Look at template_new_reader.py for documentation how to integrate a new RFID reader
     """
+
     def __init__(self, reader_cfg_key: str, description: str, logger: logging.Logger):
         super().__init__()
         self.logger = logger
