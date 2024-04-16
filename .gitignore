@@ -32,10 +32,12 @@ __pycache__/
 *.py[cod]
 
 .git
+.venv
 *~
 *.*~
 *.pyc
 *.idea
+node_modules/
 
 
 # Created by https://www.gitignore.io/api/composer
