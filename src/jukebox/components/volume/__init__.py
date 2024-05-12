@@ -107,6 +107,7 @@ class PulseMonitor(threading.Thread):
             * new sound card gets connected
 
         """
+
         def register(self, func: Callable[[str, str], None]):
             """
             Add a new callback function :attr:`func`.
@@ -297,6 +298,7 @@ class PulseVolumeControl:
             * audio sink is changed
 
         """
+
         def register(self, func: Callable[[str, str, int, int], None]):
             """
             Add a new callback function :attr:`func`.
@@ -328,6 +330,7 @@ class PulseVolumeControl:
             * audio volume level is changed
 
         """
+
         def register(self, func: Callable[[int, bool, bool], None]):
             """
             Add a new callback function :attr:`func`.

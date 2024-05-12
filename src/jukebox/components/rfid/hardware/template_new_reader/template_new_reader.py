@@ -53,6 +53,7 @@ class ReaderClass(ReaderBaseClass):
       - cleanup
       - stop
     """
+
     def __init__(self, reader_cfg_key):
         """
         In the constructor, you will get the `reader_cfg_key` with which you can access the configuration data

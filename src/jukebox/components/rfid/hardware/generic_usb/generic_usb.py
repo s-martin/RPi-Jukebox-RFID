@@ -29,6 +29,7 @@ cfg = jukebox.cfghandler.get_handler('rfid')
 def _get_devices() -> List[evdev.InputDevice]:
     """
     Open all input devices for inspection
+
     :return: List of input devices
     """
     return [evdev.InputDevice(fn) for fn in evdev.list_devices()]
@@ -37,6 +38,7 @@ def _get_devices() -> List[evdev.InputDevice]:
 def _close_devices(device_list) -> None:
     """
     Close listed input devices
+
     :param device_list: List of opened input devices to be closed
     :return: None
     """
@@ -52,7 +54,8 @@ def _is_keyboard(device: evdev.InputDevice) -> bool:
     One device has normal keyboard keys (this is what we want), the other has only specialized keys.
 
     :parameter device: an opened evdev.InputDevice to inspect
-    :return: True/False"""
+    :return: True/False
+    """
     # The mandatory keys that the device must have to pass as keyboard
     # Developer note: The range KEY_ESC ... KEY_D has been carried over from the previous implementation
     # for the KKMoon Reader, which is known to work. This range includes also keys such as backspace, right brace, ..

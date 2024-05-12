@@ -27,6 +27,7 @@ def _get_music_library_path(conf_file):
 
 class MusicLibPath:
     """Extract the music directory from the mpd.conf file"""
+
     def __init__(self):
         self._music_library_path = None
         mpd_conf_file = cfg.setndefault('playermpd', 'mpd_conf', value='~/.config/mpd/mpd.conf')

@@ -64,9 +64,8 @@ def query_customization() -> dict:
 
 
 class ReaderClass(ReaderBaseClass):
-    """
-    The reader class for nfcpy supported NFC card readers.
-    """
+    """The reader class for nfcpy supported NFC card readers."""
+
     def __init__(self, reader_cfg_key):
         # Create a per-instance logger, just in case the reader will run multiple times in various threads
         self._logger = logging.getLogger(f'jb.rfid.nfcpy({reader_cfg_key})')
@@ -89,21 +88,15 @@ class ReaderClass(ReaderBaseClass):
         self._keep_running = True
 
     def cleanup(self):
-        """
-        The cleanup function: free and release all resources used by this card reader (if any).
-        """
+        """The cleanup function: free and release all resources used by this card reader (if any)."""
         self.clf.close()
 
     def stop(self):
-        """
-        This function is called to tell the reader to exit its reading function.
-        """
+        """This function is called to tell the reader to exit its reading function."""
         self._keep_running = False
 
     def read_card(self) -> str:
-        """
-        Blocking or non-blocking function that waits for a new card to appear and return the card's UID as string
-        """
+        """Blocking or non-blocking function that waits for a new card to appear and return the card's UID as string"""
         self._logger.debug("Wait for card")
         while self._keep_running:
             target = self.clf.sense(RemoteTarget('106A'),

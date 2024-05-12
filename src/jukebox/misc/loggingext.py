@@ -51,6 +51,7 @@ class ColorFilter(logging.Filter):
 
     Don't forget to {reset} the color settings at the end of the string.
     """
+
     def __init__(self, enable=True, color_levelname=True):
         """
         :param enable: Enable the coloring
@@ -98,6 +99,7 @@ class PubStream:
     > To avoid endless recursions: The creation of a Publisher MUST NOT generate any log messages! Nor any of the
     > functions in the send-function stack!
     """
+
     def __init__(self):
         self._topic = 'core.logger'
         self._message = ''
@@ -116,7 +118,9 @@ class PubStreamHandler(logging.StreamHandler):
     This serves one purpose: In logger.yaml custom handlers
     can be configured (which are automatically instantiated).
     Using this Handler, we can output to PubStream whithout
-    support code to instantiate PubStream keeping this file generic"""
+    support code to instantiate PubStream keeping this file generic
+    """
+
     def __init__(self):
         super().__init__(PubStream())
 

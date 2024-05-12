@@ -14,9 +14,7 @@ STATE = TypeVar('STATE', bound=Enum)
 
 
 class PlayContentCallbacks(Generic[STATE], CallbackHandler):
-    """
-    Callbacks are executed in various play functions
-    """
+    """Callbacks are executed in various play functions"""
 
     def register(self, func: Callable[[str, STATE], None]):
         """

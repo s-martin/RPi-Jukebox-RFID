@@ -147,7 +147,6 @@ def query_user_for_reader(dependency_install='query') -> dict:
     :return: nested dict with entire configuration that can be read into ConfigParser
     :rtype: dict as {section: {parameter: value}}
     """
-
     package_dir = os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + '/../hardware')
     logger.debug(f"Package location: {package_dir}")
     # For known included readers, specify manual order

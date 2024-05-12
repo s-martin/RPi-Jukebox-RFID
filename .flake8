@@ -8,12 +8,25 @@ ignore =
     # continuation line under-indented for visual indent
     E128,
     # line break before binary operator
-    W503
+    W503,
+    # we dont have always a summary in the first line
+    D205,
+    # We don't always want periods at the end of the first docstring line
+    D400,
+    # We dont rephrase to imperative mood
+    D401
 per-file-ignores =
     # Only in __init__files ignore imported but unused
     # Not necessary, if __all__ is declared in __init__ file
     # https://www.python.org/dev/peps/pep-0008/#id48
     __init__.py:F401
+    # Ignore docstring warnings in descriptions
+    **/description.py:D100
+    # Ignore docstring warnings in test files
+    **/test_*.py:D100,D101,D102,D103,D107
+    # Ignore docstring warnings in test config file
+    conftext.py:D100
+
 count = True
 max-complexity = 12
 statistics = True

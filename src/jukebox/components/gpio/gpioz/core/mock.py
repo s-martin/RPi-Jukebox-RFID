@@ -1,8 +1,6 @@
 # RPi-Jukebox-RFID Version 3
 # Copyright (c) See file LICENSE in project root folder
-"""
-Changes to the GPIOZero devices for using with the Mock RFID Reader
-"""
+"""Changes to the GPIOZero devices for using with the Mock RFID Reader"""
 
 import gpiozero
 
@@ -20,7 +18,8 @@ def patch_mock_outputs_with_callback():
     Other output devices cannot be represented in the GUI and are silently ignored.
 
     > [!NOTE]
-    > Only for developing purposes!"""
+    > Only for developing purposes!
+    """
     gpiozero.LED._write_orig = gpiozero.LED._write
     gpiozero.LED._write = rewrite
     gpiozero.LED.on_change_callback = None

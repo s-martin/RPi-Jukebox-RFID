@@ -188,6 +188,7 @@ class PublishServer(threading.Thread):
 
     The code is structures using a [Reactor Pattern](https://zguide.zeromq.org/docs/chapter5/#Using-a-Reactor)
     """
+
     def __init__(self, tcp_port, websocket_port):
         super().__init__(name='PubServer')
         self.daemon = True
@@ -270,8 +271,8 @@ class Publisher:
     > [!NOTE]
     > * An instance must not be shared across threads!
     > * One instance per thread is enough
-
     """
+
     def __init__(self, check_thread_owner=True):
         """
         :param check_thread_owner: Check if send() is always called from the correct thread. This is debug feature
@@ -322,7 +323,8 @@ class Publisher:
     def resend(self, topic: Optional[str] = None):
         """Instructs the PublishServer to resend current status to all subscribers
 
-        Not necessary to call after incremental updates or new subscriptions - that will happen automatically!"""
+        Not necessary to call after incremental updates or new subscriptions - that will happen automatically!
+        """
         logger.debug("Sending command 'resend' to PublishServer")
         if topic is None:
             topic = ''

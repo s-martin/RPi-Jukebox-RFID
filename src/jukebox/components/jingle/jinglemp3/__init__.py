@@ -1,6 +1,4 @@
-"""
-Generic MP3 jingle Service for jingle.JingleFactory
-"""
+"""Generic MP3 jingle Service for jingle.JingleFactory"""
 import logging
 import subprocess
 import jukebox.plugs as plugin

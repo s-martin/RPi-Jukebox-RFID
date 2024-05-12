@@ -24,10 +24,12 @@ cfg = jukebox.cfghandler.get_handler('jukebox')
 
 @atexit.register
 def log_active_threads():
-    """This functions is registered with atexit very early, meaning it will be run very late. It is the best guess to
+    """
+    This functions is registered with atexit very early, meaning it will be run very late. It is the best guess to
     evaluate which Threads are still running (and probably shouldn't be)
 
-    This function is registered before all the plugins and their dependencies are loaded"""
+    This function is registered before all the plugins and their dependencies are loaded
+    """
     logger.debug(f"Active Threads = {threading.enumerate()}")
 
 

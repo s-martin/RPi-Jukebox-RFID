@@ -1,6 +1,5 @@
-"""
-Generalized listener for ``dev/input`` devices
-"""
+"""Generalized listener for ``dev/input`` devices"""
+
 import logging
 import threading
 import time
@@ -22,7 +21,8 @@ def _filter_by_mandatory_keys(all_devices: List[evdev.InputDevice], mandatory_ke
     """Generator filtering all_devices based on mandatory keys
 
     :param all_devices: List of input device candidates
-    :param mandatory_keys: Set of integer key codes that included devices must have"""
+    :param mandatory_keys: Set of integer key codes that included devices must have
+    """
     for dev in all_devices:
         try:
             device_key_list = dev.capabilities()[ev.ecodes.EV_KEY]
@@ -88,6 +88,7 @@ def find_device(device_name: str, exact_name: bool = True, mandatory_keys: Optio
 
 class EvDevKeyListener(threading.Thread):
     """Opens and event input device from ``/dev/inputs``, and runs callbacks upon the button presses.
+
     Input devices could be .e.g. Keyboard, Bluetooth audio buttons, USB buttons
 
     Runs as a separate thread. When device disconnects or disappears, thread exists. A new thread must be started
@@ -95,6 +96,7 @@ class EvDevKeyListener(threading.Thread):
 
     Assign callbacks to :attr:`EvDevKeyListener.button_callbacks`
     """
+
     def __init__(self, device_name_request: str, exact_name: bool, thread_name: str):
         """
         :param device_name_request: The device name to look for
@@ -153,7 +155,6 @@ class EvDevKeyListener(threading.Thread):
                 pass
 
     def run(self):
-        """"""
         time.sleep(self.open_initial_delay)
         for idx in range(self.open_retry_cnt):
             try:

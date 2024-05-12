@@ -1,6 +1,4 @@
-"""
-Text to Speech. Plugin to speak any given text via speaker
-"""
+"""Text to Speech. Plugin to speak any given text via speaker"""
 
 import logging
 import jukebox.cfghandler

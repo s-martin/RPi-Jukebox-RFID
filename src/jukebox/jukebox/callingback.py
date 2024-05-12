@@ -1,8 +1,7 @@
 # RPi-Jukebox-RFID Version 3
 # Copyright (c) See file LICENSE in project root folder
-"""
-Provides a generic callback handler
-"""
+"""Provides a generic callback handler"""
+
 import logging
 import threading
 import traceback
@@ -11,8 +10,7 @@ from typing import Callable, Optional, List
 
 class CallbackHandler:
     """
-    Generic Callback Handler to collect callbacks functions through :func:`register` and execute them
-    with :func:`run_callbacks`
+    Generic Callback Handler to collect callback functions through :func:`register` and execute them with :func:`run_callbacks`
 
     A lock is used to sequence registering of new functions and running callbacks.
 
@@ -30,7 +28,8 @@ class CallbackHandler:
     def register(self, func: Optional[Callable[..., None]]):
         """Register a new function to be executed when the callback event happens
 
-        :param func: The function to register. If set to :data:`None`, this register request is silently ignored."""
+        :param func: The function to register. If set to :data:`None`, this register request is silently ignored.
+        """
         with self._context:
             if func is not None:
                 if callable(func):
@@ -55,7 +54,8 @@ class CallbackHandler:
         """Run all registered callbacks.
 
         *ALL* exceptions from callback functions will be caught and logged only.
-        Exceptions are not raised upwards! """
+        Exceptions are not raised upwards!
+        """
         with self._context:
             self._run_callbacks(*args, **kwargs)
 

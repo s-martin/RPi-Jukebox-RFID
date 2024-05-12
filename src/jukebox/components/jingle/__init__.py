@@ -1,8 +1,6 @@
 # RPi-Jukebox-RFID Version 3
 # Copyright (c) See file LICENSE in project root folder
-"""
-Jingle Playback Factory for extensible run-time support of various file types
-"""
+"""Jingle Playback Factory for extensible run-time support of various file types"""
 
 import os.path
 import signal

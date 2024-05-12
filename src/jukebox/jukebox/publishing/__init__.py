@@ -31,7 +31,8 @@ def get_publisher():
     If you need your very own private Publisher Instance, you'll need to instantiate it yourself.
     But: the use cases are very rare for that. I cannot think of one at the moment.
 
-    **Remember**: Don’t share ZeroMQ sockets between threads."""
+    **Remember**: Don't share ZeroMQ sockets between threads.
+    """
     global _THREAD_PUBLISHER
     if not hasattr(_THREAD_PUBLISHER, 'publisher_instance'):
         _THREAD_PUBLISHER.publisher_instance = publishing.Publisher()

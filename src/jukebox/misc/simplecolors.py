@@ -9,9 +9,8 @@ import builtins
 
 
 class Colors:
-    """
-    Container class for all the colors as constants
-    """
+    """Container class for all the colors as constants"""
+
     reset = '\033[0m'
     bold = '\033[01m'
     black = '\033[30m'

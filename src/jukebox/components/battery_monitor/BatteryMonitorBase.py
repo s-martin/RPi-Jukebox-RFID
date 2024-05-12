@@ -33,7 +33,8 @@ batt_mon = None
 
 
 class pt1_frac():
-    '''fixed point first order filter, fractional format: 2^16,2^16'''
+    """fixed point first order filter, fractional format: 2^16,2^16."""
+
     def __init__(self, coeff, init=0):
         self.coeff = int(65536 * coeff)
         self.store = int(init) << 16
@@ -71,7 +72,7 @@ def interpolate(cc, input):
 
 
 class BattmonBase():
-    '''Battery Monitor base class '''
+    """Battery Monitor base class."""
 
     def __init__(self, cfg, logger):
         self._logger = logger

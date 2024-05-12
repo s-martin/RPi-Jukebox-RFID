@@ -27,7 +27,8 @@ class MultiTimer(threading.Thread):
 
     Initiates start and publishing by calling self.publish_callback
 
-    Note: Inspired by threading.Timer and generally using the same API"""
+    Note: Inspired by threading.Timer and generally using the same API
+    """
 
     def __init__(self, interval, iterations, function: Callable, args=None, kwargs=None):
         super().__init__()
@@ -88,9 +89,8 @@ class MultiTimer(threading.Thread):
 
 
 class GenericTimerClass:
-    """
-    Interface for plugin / RPC accessibility for a single event timer
-    """
+    """Interface for plugin / RPC accessibility for a single event timer"""
+
     def __init__(self, name, wait_seconds: float, function, args=None, kwargs=None):
         """
         :param wait_seconds: The time in seconds to wait before calling function
@@ -157,7 +157,8 @@ class GenericTimerClass:
     def get_timeout(self):
         """Get the configured time-out
 
-        :return: The total wait time. (Not the remaining wait time!)"""
+        :return: The total wait time. (Not the remaining wait time!)
+        """
         return self._wait_seconds
 
     @plugin.tag
@@ -194,7 +195,8 @@ class GenericTimerClass:
 
         Enable override is required as this is called from inside the timer when it finishes
         This means the timer is still running, but it is the last thing it does.
-        Otherwise it is not possible to detect the timer change at the end"""
+        Otherwise it is not possible to detect the timer change at the end
+        """
         if self._name is not None:
             state = self.get_state()
             if enabled is not None:
@@ -206,9 +208,8 @@ class GenericTimerClass:
 
 
 class GenericEndlessTimerClass(GenericTimerClass):
-    """
-    Interface for plugin / RPC accessibility for an event timer call function endlessly every m seconds
-    """
+    """Interface for plugin / RPC accessibility for an event timer call function endlessly every m seconds"""
+
     def __init__(self, name, wait_seconds_per_iteration: float, function, args=None, kwargs=None):
         # Remove the necessity for the 'iterations' keyword that is added by GenericTimerClass
         super().__init__(name, wait_seconds_per_iteration, function, args, kwargs)
@@ -222,9 +223,8 @@ class GenericEndlessTimerClass(GenericTimerClass):
 
 
 class GenericMultiTimerClass(GenericTimerClass):
-    """
-    Interface for plugin / RPC accessibility for an event timer that performs an action n times every m seconds
-    """
+    """Interface for plugin / RPC accessibility for an event timer that performs an action n times every m seconds"""
+
     def __init__(self, name, iterations: int, wait_seconds_per_iteration: float, callee, args=None, kwargs=None):
         """
         :param iterations: Number of times callee is called

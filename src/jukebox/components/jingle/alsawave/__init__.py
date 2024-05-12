@@ -1,6 +1,4 @@
-"""
-ALSA wave jingle Service for jingle.JingleFactory
-"""
+"""ALSA wave jingle Service for jingle.JingleFactory"""
 import alsaaudio
 import logging
 import wave
@@ -19,6 +17,7 @@ cfg = jukebox.cfghandler.get_handler('jukebox')
 @plugin.register
 class AlsaWave:
     """Jingle Service for playing wave files directly from Python through ALSA"""
+
     fmt_lookup = {1: alsaaudio.PCM_FORMAT_U8,
                   2: alsaaudio.PCM_FORMAT_S16_LE,
                   3: alsaaudio.PCM_FORMAT_S24_3LE,
