@@ -25,9 +25,11 @@ def decode_card_command(cfg_rpc_cmd: Mapping, logger: logging.Logger = log):
 
 
 def card_command_to_str(cfg_rpc_cmd: Mapping, long=False) -> List[str]:
-    """Returns a list of strings with [card_action, ignore_same_id_delay, ignore_card_removal_action]
+    """
+    Returns a list of strings with [card_action, ignore_same_id_delay, ignore_card_removal_action]
 
-    The last two parameters are only present, if *long* is True and if they are present in the cfg_rpc_cmd"""
+    The last two parameters are only present, if *long* is True and if they are present in the cfg_rpc_cmd
+    """
     action = decode_card_command(cfg_rpc_cmd)
     readable = [utils.rpc_call_to_str(action)]
     if long:
