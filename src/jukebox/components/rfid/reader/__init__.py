@@ -58,9 +58,7 @@ class CardRemovalTimerClass(threading.Thread):
     """A timer watchdog thread that calls timeout_action on time-out"""
 
     def __init__(self, on_timeout_callback, logger: logging.Logger = None):
-        """
-        :param on_timeout_callback: The function to execute on time-out
-        """
+        """:param on_timeout_callback: The function to execute on time-out"""
         threading.Thread.__init__(self)
         self._logger = logger if logger is not None else logging.getLogger('jb.rfid.cardremove')
         self.trigger = threading.Event()

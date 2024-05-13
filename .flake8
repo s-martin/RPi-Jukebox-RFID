@@ -7,6 +7,10 @@ ignore =
     E128,
     # line break before binary operator
     W503,
+    # Missing docstring in magic method
+    D105,
+    # Missing docstring in __init__
+    D107, 
     # we dont have always a summary in the first line
     D205,
     # We don't always want periods at the end of the first docstring line
@@ -38,3 +42,5 @@ extend-exclude =
     .venv/*
     # ignore node modules
     */node_modules/*
+    # ignore config files
+    conftest.py

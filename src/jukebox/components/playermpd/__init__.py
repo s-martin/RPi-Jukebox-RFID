@@ -347,7 +347,8 @@ class PlayerMPD:
         """
         Re-start current playlist from first track
 
-        Note: Will not re-read folder config, but leave settings untouched"""
+        Note: Will not re-read folder config, but leave settings untouched
+        """
         logger.debug("Rewind")
         with self.mpd_lock:
             self.mpd_client.play(1)
@@ -357,7 +358,8 @@ class PlayerMPD:
         """
         Re-start playing the last-played folder
 
-        Will reset settings to folder config"""
+        Will reset settings to folder config
+        """
         logger.debug("Replay")
         with self.mpd_lock:
             self.play_folder(self.music_player_status['player_status']['last_played_folder'])
@@ -375,7 +377,8 @@ class PlayerMPD:
 
         > [!NOTE]
         > To me this seems much like the behaviour of play,
-        > but we keep it as it is specifically implemented in box 2.X"""
+        > but we keep it as it is specifically implemented in box 2.X
+        """
         with self.mpd_lock:
             if self.mpd_status['state'] == 'stop':
                 self.play_folder(self.music_player_status['player_status']['last_played_folder'])
@@ -521,9 +524,7 @@ class PlayerMPD:
 
     @plugs.tag
     def get_single_coverart(self, song_url):
-        """
-        Saves the album art image to a cache and returns the filename.
-        """
+        """Saves the album art image to a cache and returns the filename."""
         base_filename = slugify(song_url)
 
         try:
@@ -685,7 +686,8 @@ class PlayerMPD:
         Get the current volume
 
         For volume control do not use directly, but use through the plugin 'volume',
-        as the user may have configured a volume control manager other than MPD"""
+        as the user may have configured a volume control manager other than MPD
+        """
         with self.mpd_lock:
             volume = self.mpd_client.status().get('volume')
         return int(volume)
@@ -695,7 +697,8 @@ class PlayerMPD:
         Set the volume
 
         For volume control do not use directly, but use through the plugin 'volume',
-        as the user may have configured a volume control manager other than MPD"""
+        as the user may have configured a volume control manager other than MPD
+        """
         with self.mpd_lock:
             self.mpd_client.setvol(volume)
         return self.get_volume()
