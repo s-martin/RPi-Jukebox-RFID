@@ -21,7 +21,7 @@ requests
 tornado
 
 # RPi's GPIO packages:
-RPi.GPIO
+rpi-lgpio
 gpiozero
 
 # PyZMQ is a special case:
